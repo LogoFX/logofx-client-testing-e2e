@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Client.Testing.EndToEnd", "LogoFX.Client.Testing.EndToEnd.csproj", "{33E71026-F6A0-4C19-9383-ABCC1F59C663}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Client.Testing.EndToEnd", "LogoFX.Client.Testing.EndToEnd\LogoFX.Client.Testing.EndToEnd.csproj", "{33E71026-F6A0-4C19-9383-ABCC1F59C663}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Client.Testing.EndToEnd.Tests", "..\LogoFX.Client.Testing.EndToEnd.Tests\LogoFX.Client.Testing.EndToEnd.Tests.csproj", "{BFF2732C-B3D6-4F9E-A868-D8AEB02015B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Client.Testing.EndToEnd.Tests", "LogoFX.Client.Testing.EndToEnd.Tests\LogoFX.Client.Testing.EndToEnd.Tests.csproj", "{BFF2732C-B3D6-4F9E-A868-D8AEB02015B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
