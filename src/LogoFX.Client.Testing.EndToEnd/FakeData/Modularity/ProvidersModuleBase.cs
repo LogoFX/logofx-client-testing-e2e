@@ -1,58 +1,59 @@
 using System;
 using System.Linq;
 using Attest.Fake.Builders;
-using Attest.Fake.Registration;
 using LogoFX.Client.Testing.EndToEnd.FakeData.Shared;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
+using RegistrationHelper = Attest.Fake.Registration.RegistrationHelper;
 
 namespace LogoFX.Client.Testing.EndToEnd.FakeData.Modularity
 {
     /// <summary>
     /// Base module for fake providers to be used in End-To-End tests.
     /// </summary>
-    /// <typeparam name="TContainer">The type of the container.</typeparam>
+    /// <typeparam name="TContainerAdapter">The type of the ioc container.</typeparam>
     /// <seealso cref="Solid.Practices.Modularity.ICompositionModule{TContainerAdapter}" />
-    public abstract class ProvidersModuleBase<TContainer> : ICompositionModule<TContainer>
-        where TContainer : IIocContainer
+    public abstract class ProvidersModuleBase<TContainerAdapter> : ICompositionModule<TContainerAdapter>
+        where TContainerAdapter : IIocContainerRegistrator
     {
         /// <summary>
-        /// Registers composition module into IoC container
+        /// Registers composition module into ioc container.
         /// </summary>
-        /// <param name="iocContainer">IoC container</param>
-        public void RegisterModule(TContainer iocContainer)
+        /// <param name="iocContainer">The ioc container.</param>
+        public void RegisterModule(TContainerAdapter iocContainer)
         {
             BuildersCollectionContext.DeserializeBuilders();
             OnRegisterProviders(iocContainer);            
         }
 
         /// <summary>
-        /// Override this method to register application providers into the container.
+        /// Override this method to register application providers into the ioc container.
         /// </summary>
-        /// <param name="iocContainer">The ioc container.</param>
-        protected virtual void OnRegisterProviders(IIocContainer iocContainer)
+        /// <param name="iocContainerRegistrator">The ioc container registrator.</param>
+        protected virtual void OnRegisterProviders(IIocContainerRegistrator iocContainerRegistrator)
         {
 
         }
 
         /// <summary>
-        /// Registers all builders of the given provider type into the container.
+        /// Registers all builders of the given provider type into the ioc container.
         /// </summary>
         /// <typeparam name="TProvider">The type of the provider.</typeparam>
-        /// <param name="iocContainer">The ioc container.</param>
+        /// <param name="iocContainerRegistrator">The ioc container registrator.</param>
         /// <param name="defaultBuilderCreationFunc">The default builder creation function.</param>
-        protected void RegisterAllBuilders<TProvider>(IIocContainer iocContainer, Func<FakeBuilderBase<TProvider>> defaultBuilderCreationFunc) where TProvider : class
+        protected void RegisterAllBuilders<TProvider>(IIocContainerRegistrator iocContainerRegistrator, 
+            Func<FakeBuilderBase<TProvider>> defaultBuilderCreationFunc) where TProvider : class
         {
             var builders = BuildersCollectionContext.GetBuilders<TProvider>().ToArray();
             if (builders.Length == 0)
             {
-                RegistrationHelper.RegisterBuilder(iocContainer, defaultBuilderCreationFunc());
+                RegistrationHelper.RegisterBuilder(iocContainerRegistrator, defaultBuilderCreationFunc());
             }
             else
             {
                 foreach (var builder in builders)
                 {
-                    RegistrationHelper.RegisterBuilder(iocContainer, builder);
+                    RegistrationHelper.RegisterBuilder(iocContainerRegistrator, builder);
                 }
             }
         }

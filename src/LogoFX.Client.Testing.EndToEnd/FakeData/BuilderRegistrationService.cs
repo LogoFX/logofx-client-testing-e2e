@@ -11,7 +11,7 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData
     public class BuilderRegistrationService : IBuilderRegistrationService
     {
         /// <summary>
-        /// Registers the builder into IoC container.
+        /// Registers the builder into ioc container.
         /// </summary>
         /// <typeparam name="TService">The type of the service.</typeparam>
         /// <param name="builder">The builder.</param>
