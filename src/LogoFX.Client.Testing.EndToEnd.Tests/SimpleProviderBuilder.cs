@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Attest.Fake.Builders;
-using Attest.Fake.Setup;
+using Attest.Fake.Setup.Contracts;
+using LogoFX.Client.Data.Fake.ProviderBuilders;
 
 namespace LogoFX.Client.Testing.EndToEnd.Tests
 {
@@ -37,16 +37,13 @@ namespace LogoFX.Client.Testing.EndToEnd.Tests
         {
             _warehouseItemsStorage.Clear();
             _warehouseItemsStorage.AddRange(warehouseItems);
-        }
+        }       
 
-        protected override void SetupFake()
+        protected override IServiceCall<ISimpleProvider> CreateServiceCall(IHaveNoMethods<ISimpleProvider> serviceCallTemplate)
         {
-            var initSetup = ServiceCall<ISimpleProvider>.CreateServiceCall(FakeService);
-
-            var setup = initSetup
-                .AddMethodCallWithResult(t => t.GetSimpleItems(), r => r.Complete(GetSimpleItems));
-
-            setup.Build();
+            var setup = serviceCallTemplate
+               .AddMethodCallWithResult(t => t.GetSimpleItems(), r => r.Complete(GetSimpleItems));
+            return setup;
         }
 
         private IEnumerable<SimpleItemDto> GetSimpleItems()
