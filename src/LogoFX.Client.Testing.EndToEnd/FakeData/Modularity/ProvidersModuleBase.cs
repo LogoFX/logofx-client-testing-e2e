@@ -10,17 +10,15 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Modularity
 {
     /// <summary>
     /// Base module for fake providers to be used in End-To-End tests.
-    /// </summary>
-    /// <typeparam name="TContainerAdapter">The type of the ioc container.</typeparam>
-    /// <seealso cref="Solid.Practices.Modularity.ICompositionModule{TContainerAdapter}" />
-    public abstract class ProvidersModuleBase<TContainerAdapter> : ICompositionModule<TContainerAdapter>
-        where TContainerAdapter : IIocContainerRegistrator
+    /// </summary>    
+    /// <seealso cref="Solid.Practices.Modularity.ICompositionModule{IIocContainerRegistrator}" />
+    public abstract class ProvidersModuleBase : ICompositionModule<IIocContainerRegistrator>        
     {
         /// <summary>
         /// Registers composition module into ioc container.
         /// </summary>
         /// <param name="iocContainer">The ioc container.</param>
-        public void RegisterModule(TContainerAdapter iocContainer)
+        public void RegisterModule(IIocContainerRegistrator iocContainer)
         {
             BuildersCollectionContext.DeserializeBuilders();
             OnRegisterProviders(iocContainer);            
