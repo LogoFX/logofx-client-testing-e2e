@@ -63,6 +63,12 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
         /// </summary>
         public static void SerializeBuilders()
         {
+            //var fileStream = new FileStream(SerializedBuildersPath, FileMode.Create);
+
+            //var binaryFormatter = new BinaryFormatter();
+            //binaryFormatter.Serialize(fileStream, _buildersCollection);
+            //fileStream.Close();
+
             var jss = new JsonSerializerSettings();
             jss.TypeNameHandling = TypeNameHandling.All;
             var dcr = new FieldsContractResolver();
@@ -80,6 +86,13 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
         /// </summary>
         public static void DeserializeBuilders()
         {
+            //var fs = new FileStream(SerializedBuildersPath, FileMode.Open);
+            //var bf = new BinaryFormatter();
+
+            //var data = (BuildersCollection)bf.Deserialize(fs);
+            //_buildersCollection.ResetBuilders(data.GetAllBuilders());
+            //fs.Close();
+
             var fileStream = new FileStream(SerializedBuildersPath, FileMode.Open);
             var textReader = new StreamReader(fileStream);
             var str = textReader.ReadToEnd();
