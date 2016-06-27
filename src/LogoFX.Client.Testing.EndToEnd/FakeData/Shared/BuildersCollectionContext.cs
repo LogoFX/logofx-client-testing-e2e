@@ -2,11 +2,31 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Reflection;
 using Attest.Fake.Builders;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
 {
+    internal sealed class FieldsContractResolver : DefaultContractResolver
+    {
+        protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
+        {
+            var fileds = type.GetRuntimeFields().Select(f => CreateProperty(f, memberSerialization));
+            var propList = fileds.ToList();
+
+
+            foreach (var p in propList)
+            {
+                p.Writable = true;
+                p.Readable = true;
+            }
+
+            return propList;
+        }
+    }
+
     /// <summary>
     /// Allows to manage builders collection, including serialization/deserialization.
     /// </summary>
@@ -43,11 +63,16 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
         /// </summary>
         public static void SerializeBuilders()
         {
-            var fileStream = new FileStream(SerializedBuildersPath, FileMode.Create);
+            var jss = new JsonSerializerSettings();
+            jss.TypeNameHandling = TypeNameHandling.All;
+            var dcr = new FieldsContractResolver();
+            jss.ContractResolver = dcr;
 
-            var binaryFormatter = new BinaryFormatter();
-            binaryFormatter.Serialize(fileStream, _buildersCollection);
-            fileStream.Close();
+            var str = JsonConvert.SerializeObject(_buildersCollection, jss);
+            var fileStream = new FileStream(SerializedBuildersPath, FileMode.Create);
+            var textWritter = new StreamWriter(fileStream);
+            textWritter.Write(str);
+            textWritter.Close();
         }
 
         /// <summary>
@@ -55,12 +80,17 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
         /// </summary>
         public static void DeserializeBuilders()
         {
-            var fs = new FileStream(SerializedBuildersPath, FileMode.Open);
-            var bf = new BinaryFormatter();
+            var fileStream = new FileStream(SerializedBuildersPath, FileMode.Open);
+            var textReader = new StreamReader(fileStream);
+            var str = textReader.ReadToEnd();
 
-            var data = (BuildersCollection)bf.Deserialize(fs);
+            var jss = new JsonSerializerSettings();
+            jss.TypeNameHandling = TypeNameHandling.All;
+            var dcr = new FieldsContractResolver();
+            jss.ContractResolver = dcr;
+            var data = JsonConvert.DeserializeObject<BuildersCollection>(str, jss);
             _buildersCollection.ResetBuilders(data.GetAllBuilders());
-            fs.Close();
+            textReader.Close();
         }
     }
 

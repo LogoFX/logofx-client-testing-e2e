@@ -5,7 +5,6 @@ using LogoFX.Client.Data.Fake.ProviderBuilders;
 
 namespace LogoFX.Client.Testing.EndToEnd.Tests
 {
-    [Serializable]
     public class SimpleItemDto
     {
         public string Name { get; set; }
@@ -18,7 +17,6 @@ namespace LogoFX.Client.Testing.EndToEnd.Tests
         IEnumerable<SimpleItemDto> GetSimpleItems();
     }
 
-    [Serializable]
     class SimpleProviderBuilder : FakeBuilderBase<ISimpleProvider>
     {
         private readonly List<SimpleItemDto> _warehouseItemsStorage = new List<SimpleItemDto>();
