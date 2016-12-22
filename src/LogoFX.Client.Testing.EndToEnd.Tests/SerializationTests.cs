@@ -4,6 +4,7 @@ using Attest.Fake.Core;
 using Attest.Fake.Moq;
 using LogoFX.Client.Testing.EndToEnd.FakeData.Shared;
 using NUnit.Framework;
+using Solid.Practices.Composition;
 
 namespace LogoFX.Client.Testing.EndToEnd.Tests
 {
@@ -35,7 +36,8 @@ namespace LogoFX.Client.Testing.EndToEnd.Tests
                 }
             };
             FakeFactoryContext.Current = new FakeFactory();   
-            ConstraintFactoryContext.Current = new ConstraintFactory();         
+            ConstraintFactoryContext.Current = new ConstraintFactory();
+            PlatformProvider.Current = new NetPlatformProvider();
             var simpleBuilder = SimpleProviderBuilder.CreateBuilder();
             simpleBuilder.WithWarehouseItems(items);
 
