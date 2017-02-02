@@ -2,16 +2,16 @@
 using System.Linq;
 using Attest.Fake.Core;
 using Attest.Fake.Moq;
+using FluentAssertions;
 using LogoFX.Client.Testing.EndToEnd.FakeData.Shared;
-using NUnit.Framework;
 using Solid.Practices.Composition;
+using Xunit;
 
 namespace LogoFX.Client.Testing.EndToEnd.Tests
-{
-    [TestFixture]
-    class SerializationTests
+{    
+    public class SerializationTests
     {
-        [Test]
+        [Fact]
         public void WhenItemsAreSerializedAndItemsAreDeserialized_ThenItemsCollectionIsCorrect()
         {
             var items = new[]
@@ -52,9 +52,9 @@ namespace LogoFX.Client.Testing.EndToEnd.Tests
             {
                 var item = items[i];
                 var actualItem = actualItems[i];
-                Assert.AreEqual(item.Quantity, actualItem.Quantity);
-                Assert.AreEqual(item.Price, actualItem.Price);
-                Assert.AreEqual(item.Name, actualItem.Name);
+                actualItem.Quantity.Should().Be(item.Quantity);
+                actualItem.Price.Should().Be(item.Price);
+                actualItem.Name.Should().Be(item.Name);                
             }
         }
     }
