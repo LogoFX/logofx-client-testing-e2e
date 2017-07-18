@@ -42,7 +42,7 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
         /// </summary>
         /// <typeparam name="TService">The type of the service.</typeparam>
         /// <param name="builder">The builder.</param>
-        public static void AddBuilder<TService>(FakeBuilderBase<TService> builder) where TService : class
+        public static void AddBuilder<TService>(IBuilder<TService> builder) where TService : class
         {
             _buildersCollection.AddBuilder(builder);
         }

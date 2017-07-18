@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>LogoFX.Client.Testing.EndToEnd</AssemblyName>
+    <RootNamespace>LogoFX.Client.Testing.EndToEnd</RootNamespace>
+    <Version>1.2.0</Version>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <FileVersion>1.2.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\LogoFX.Client.Testing.EndToEnd.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\FakeData\BuilderRegistrationService.cs" Link="FakeData\BuilderRegistrationService.cs" />
+    <Compile Include="..\src\FakeData\Modularity\ProvidersModuleBase.cs" Link="FakeData\Modularity\ProvidersModuleBase.cs" />
+    <Compile Include="..\src\FakeData\Shared\BuildersCollection.cs" Link="FakeData\Shared\BuildersCollection.cs" />
+    <Compile Include="..\src\FakeData\Shared\BuildersCollectionContext.cs" Link="FakeData\Shared\BuildersCollectionContext.cs" />
+    <Compile Include="..\src\FakeData\Shared\BuildersCollectionStorage.cs" Link="FakeData\Shared\BuildersCollectionStorage.cs" />
+    <Compile Include="..\src\StartApplicationService.cs" Link="StartApplicationService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="FakeData\Modularity\" />
+    <Folder Include="FakeData\Shared\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Attest.Fake.Registration" Version="1.2.0-rc1" />
+    <PackageReference Include="LogoFX.Client.Tests.Contracts" Version="1.1.0-rc1" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.0-rc2" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="1.2.0-rc2" />
+  </ItemGroup>
+
+</Project>

@@ -15,7 +15,7 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData
         /// </summary>
         /// <typeparam name="TService">The type of the service.</typeparam>
         /// <param name="builder">The builder.</param>
-        public void RegisterBuilder<TService>(FakeBuilderBase<TService> builder) where TService : class
+        public void RegisterBuilder<TService>(IBuilder<TService> builder) where TService : class
         {
             BuildersCollectionContext.AddBuilder(builder);
         }
