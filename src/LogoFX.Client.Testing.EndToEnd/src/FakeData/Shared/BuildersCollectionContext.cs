@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Attest.Fake.Builders;
+using Solid.Patterns.Builder;
 
 namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
 {    

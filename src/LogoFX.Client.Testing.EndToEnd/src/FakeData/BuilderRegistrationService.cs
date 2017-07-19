@@ -1,6 +1,6 @@
-﻿using Attest.Fake.Builders;
-using LogoFX.Client.Testing.Contracts;
+﻿using LogoFX.Client.Testing.Contracts;
 using LogoFX.Client.Testing.EndToEnd.FakeData.Shared;
+using Solid.Patterns.Builder;
 
 namespace LogoFX.Client.Testing.EndToEnd.FakeData
 {   

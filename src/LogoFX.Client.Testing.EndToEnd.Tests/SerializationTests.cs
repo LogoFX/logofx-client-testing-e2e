@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Attest.Fake.Builders;
 using Attest.Fake.Core;
 using Attest.Fake.Moq;
 using FluentAssertions;
 using LogoFX.Client.Testing.EndToEnd.FakeData.Shared;
+using Solid.Patterns.Builder;
 using Solid.Practices.Composition;
 using Xunit;
 

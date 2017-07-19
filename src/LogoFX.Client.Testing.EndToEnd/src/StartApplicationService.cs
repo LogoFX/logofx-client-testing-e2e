@@ -15,15 +15,15 @@ namespace LogoFX.Client.Testing.EndToEnd
         /// <seealso cref="IStartApplicationService" />
         public class WithFakeProviders : StartApplicationService
         {
-            private readonly IStartApplicationHelper _startApplicationHelper;
+            private readonly IApplicationFacade _applicationFacade;
 
             /// <summary>
             /// 
             /// </summary>
-            /// <param name="startApplicationHelper"></param>
-            public WithFakeProviders(IStartApplicationHelper startApplicationHelper)
+            /// <param name="applicationFacade"></param>
+            public WithFakeProviders(IApplicationFacade applicationFacade)
             {
-                _startApplicationHelper = startApplicationHelper;
+                _applicationFacade = applicationFacade;
             }
             /// <summary>
             /// Starts the application.
@@ -32,7 +32,7 @@ namespace LogoFX.Client.Testing.EndToEnd
             public override void StartApplication(string startupPath)
             {
                 BuildersCollectionContext.SerializeBuilders();
-                _startApplicationHelper.StartApplication(startupPath);
+                _applicationFacade.Start(startupPath);
             }
         }
 
@@ -42,15 +42,15 @@ namespace LogoFX.Client.Testing.EndToEnd
         /// <seealso cref="IStartApplicationService" />
         public class WithRealProviders : StartApplicationService
         {
-            private readonly IStartApplicationHelper _startApplicationHelper;
+            private readonly IApplicationFacade _applicationFacade;
 
             /// <summary>
             /// 
             /// </summary>
-            /// <param name="startApplicationHelper"></param>
-            public WithRealProviders(IStartApplicationHelper startApplicationHelper)
+            /// <param name="applicationFacade"></param>
+            public WithRealProviders(IApplicationFacade applicationFacade)
             {
-                _startApplicationHelper = startApplicationHelper;
+                _applicationFacade = applicationFacade;
             }
             /// <summary>
             /// Starts the application.
@@ -58,7 +58,7 @@ namespace LogoFX.Client.Testing.EndToEnd
             /// <param name="startupPath">The startup path.</param>
             public override void StartApplication(string startupPath)
             {
-                _startApplicationHelper.StartApplication(startupPath);
+                _applicationFacade.Start(startupPath);
             }
         }
 
