@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Attest.Fake.Builders;
 using Solid.Patterns.Builder;
 
 namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
@@ -23,7 +22,7 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
         /// </summary>
         /// <typeparam name="TService">The type of the service.</typeparam>
         /// <returns></returns>
-        public static IEnumerable<FakeBuilderBase<TService>> GetBuilders<TService>() where TService : class
+        public static IEnumerable<IBuilder<TService>> GetBuilders<TService>() where TService : class
         {
             return _buildersCollection.GetBuilders<TService>();
         }

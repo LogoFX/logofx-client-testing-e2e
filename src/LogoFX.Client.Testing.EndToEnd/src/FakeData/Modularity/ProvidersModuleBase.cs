@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
-using Attest.Fake.Builders;
 using LogoFX.Client.Testing.EndToEnd.FakeData.Shared;
+using Solid.Patterns.Builder;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
 using RegistrationHelper = Attest.Fake.Registration.RegistrationHelper;
@@ -40,7 +40,7 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Modularity
         /// <param name="iocContainerRegistrator">The ioc container registrator.</param>
         /// <param name="defaultBuilderCreationFunc">The default builder creation function.</param>
         protected void RegisterAllBuilders<TProvider>(IIocContainerRegistrator iocContainerRegistrator, 
-            Func<FakeBuilderBase<TProvider>> defaultBuilderCreationFunc) where TProvider : class
+            Func<IBuilder<TProvider>> defaultBuilderCreationFunc) where TProvider : class
         {
             var builders = BuildersCollectionContext.GetBuilders<TProvider>().ToArray();
             if (builders.Length == 0)
