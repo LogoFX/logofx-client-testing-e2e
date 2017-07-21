@@ -17,11 +17,11 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Modularity
         /// <summary>
         /// Registers composition module.
         /// </summary>
-        /// <param name="iocContainer">The ioc container.</param>
-        public void RegisterModule(IDependencyRegistrator iocContainer)
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        public void RegisterModule(IDependencyRegistrator dependencyRegistrator)
         {
             BuildersCollectionContext.DeserializeBuilders();
-            OnRegisterProviders(iocContainer);            
+            OnRegisterProviders(dependencyRegistrator);            
         }
 
         /// <summary>
@@ -37,21 +37,21 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Modularity
         /// Registers all builders of the given provider type.
         /// </summary>
         /// <typeparam name="TProvider">The type of the provider.</typeparam>
-        /// <param name="iocContainerRegistrator">The dependency registrator.</param>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
         /// <param name="defaultBuilderCreationFunc">The default builder creation function.</param>
-        protected void RegisterAllBuilders<TProvider>(IDependencyRegistrator iocContainerRegistrator, 
+        protected void RegisterAllBuilders<TProvider>(IDependencyRegistrator dependencyRegistrator, 
             Func<IBuilder<TProvider>> defaultBuilderCreationFunc) where TProvider : class
         {
             var builders = BuildersCollectionContext.GetBuilders<TProvider>().ToArray();
             if (builders.Length == 0)
             {
-                RegistrationHelper.RegisterBuilder(iocContainerRegistrator, defaultBuilderCreationFunc());
+                RegistrationHelper.RegisterBuilder(dependencyRegistrator, defaultBuilderCreationFunc());
             }
             else
             {
                 foreach (var builder in builders)
                 {
-                    RegistrationHelper.RegisterBuilder(iocContainerRegistrator, builder);
+                    RegistrationHelper.RegisterBuilder(dependencyRegistrator, builder);
                 }
             }
         }
