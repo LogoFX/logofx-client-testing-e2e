@@ -11,35 +11,35 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Modularity
     /// <summary>
     /// Base module for fake providers to be used in End-To-End tests.
     /// </summary>    
-    /// <seealso cref="Solid.Practices.Modularity.ICompositionModule{IIocContainerRegistrator}" />
-    public abstract class ProvidersModuleBase : ICompositionModule<IIocContainerRegistrator>        
+    /// <seealso cref="Solid.Practices.Modularity.ICompositionModule{IDependencyRegistrator}" />
+    public abstract class ProvidersModuleBase : ICompositionModule<IDependencyRegistrator>        
     {
         /// <summary>
-        /// Registers composition module into ioc container.
+        /// Registers composition module.
         /// </summary>
         /// <param name="iocContainer">The ioc container.</param>
-        public void RegisterModule(IIocContainerRegistrator iocContainer)
+        public void RegisterModule(IDependencyRegistrator iocContainer)
         {
             BuildersCollectionContext.DeserializeBuilders();
             OnRegisterProviders(iocContainer);            
         }
 
         /// <summary>
-        /// Override this method to register application providers into the ioc container.
+        /// Override this method to register application providers.
         /// </summary>
-        /// <param name="iocContainerRegistrator">The ioc container registrator.</param>
-        protected virtual void OnRegisterProviders(IIocContainerRegistrator iocContainerRegistrator)
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        protected virtual void OnRegisterProviders(IDependencyRegistrator dependencyRegistrator)
         {
 
         }
 
         /// <summary>
-        /// Registers all builders of the given provider type into the ioc container.
+        /// Registers all builders of the given provider type.
         /// </summary>
         /// <typeparam name="TProvider">The type of the provider.</typeparam>
-        /// <param name="iocContainerRegistrator">The ioc container registrator.</param>
+        /// <param name="iocContainerRegistrator">The dependency registrator.</param>
         /// <param name="defaultBuilderCreationFunc">The default builder creation function.</param>
-        protected void RegisterAllBuilders<TProvider>(IIocContainerRegistrator iocContainerRegistrator, 
+        protected void RegisterAllBuilders<TProvider>(IDependencyRegistrator iocContainerRegistrator, 
             Func<IBuilder<TProvider>> defaultBuilderCreationFunc) where TProvider : class
         {
             var builders = BuildersCollectionContext.GetBuilders<TProvider>().ToArray();
