@@ -4,6 +4,7 @@ using Attest.Fake.Core;
 using Attest.Fake.Moq;
 using FluentAssertions;
 using LogoFX.Client.Testing.EndToEnd.FakeData.Shared;
+using Solid.Patterns.Builder;
 using Solid.Practices.Composition;
 using Xunit;
 
@@ -45,9 +46,9 @@ namespace LogoFX.Client.Testing.EndToEnd.Tests
             BuildersCollectionContext.SerializeBuilders();
             BuildersCollectionContext.DeserializeBuilders();
             var builders = BuildersCollectionContext.GetBuilders<ISimpleProvider>();
-            var actualBuilder = builders.First();
+            IBuilder<ISimpleProvider> actualBuilder = builders.First();
 
-            var actualItems = actualBuilder.GetService().GetSimpleItems().ToArray();
+            var actualItems = actualBuilder.Build().GetSimpleItems().ToArray();
             for (int i = 0; i < Math.Max(items.Length, actualItems.Length); i++)
             {
                 var item = items[i];

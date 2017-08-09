@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Attest.Fake.Builders;
+using Solid.Patterns.Builder;
 
 namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
 {
@@ -11,9 +11,9 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
     {
         private readonly List<object> _allBuilders = new List<object>();
 
-        internal IEnumerable<FakeBuilderBase<TService>> GetBuilders<TService>() where TService : class
+        internal IEnumerable<IBuilder<TService>> GetBuilders<TService>() where TService : class
         {
-            return _allBuilders.OfType<FakeBuilderBase<TService>>();
+            return _allBuilders.OfType<IBuilder<TService>>();
         }
 
         internal IEnumerable<object> GetAllBuilders()
@@ -21,7 +21,7 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
             return _allBuilders;
         }
 
-        internal void AddBuilder<TService>(FakeBuilderBase<TService> builder) where TService : class
+        internal void AddBuilder<TService>(IBuilder<TService> builder) where TService : class
         {
             _allBuilders.Add(builder);
         }
