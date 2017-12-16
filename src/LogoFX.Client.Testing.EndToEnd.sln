@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Client.Testing.EndToEnd.Tests", "LogoFX.Client.Testing.EndToEnd.Tests\LogoFX.Client.Testing.EndToEnd.Tests.csproj", "{BFF2732C-B3D6-4F9E-A868-D8AEB02015B1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Client.Testing.EndToEnd.NET45", "LogoFX.Client.Testing.EndToEnd\net45\LogoFX.Client.Testing.EndToEnd.NET45.csproj", "{A1F3F735-F9D5-40FD-B05B-31129F9D899A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Client.Testing.EndToEnd.NETStandard13", "LogoFX.Client.Testing.EndToEnd\netstandard1.3\LogoFX.Client.Testing.EndToEnd.NETStandard13.csproj", "{D937838C-EA0A-4C0B-99ED-E2FC951CEF75}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Client.Testing.EndToEnd.NETStandard20", "LogoFX.Client.Testing.EndToEnd\netstandard2.0\LogoFX.Client.Testing.EndToEnd.NETStandard20.csproj", "{CFA0CCBF-5F9A-4F9B-A195-0CC063EAADB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Client.Testing.EndToEnd.Tests.NETStandard13", "LogoFX.Client.Testing.EndToEnd.Tests.NETStandard13\LogoFX.Client.Testing.EndToEnd.Tests.NETStandard13.csproj", "{2A7D50E6-BC54-43C7-A6D9-3DB8AB8AAB22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Client.Testing.EndToEnd.Tests.NETStandard20", "LogoFX.Client.Testing.EndToEnd.Tests.NETStandard20\LogoFX.Client.Testing.EndToEnd.Tests.NETStandard20.csproj", "{23F4CD6C-8120-4EB3-A187-34655B943543}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BFF2732C-B3D6-4F9E-A868-D8AEB02015B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFF2732C-B3D6-4F9E-A868-D8AEB02015B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFF2732C-B3D6-4F9E-A868-D8AEB02015B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFF2732C-B3D6-4F9E-A868-D8AEB02015B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1F3F735-F9D5-40FD-B05B-31129F9D899A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1F3F735-F9D5-40FD-B05B-31129F9D899A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1F3F735-F9D5-40FD-B05B-31129F9D899A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1F3F735-F9D5-40FD-B05B-31129F9D899A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D937838C-EA0A-4C0B-99ED-E2FC951CEF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D937838C-EA0A-4C0B-99ED-E2FC951CEF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D937838C-EA0A-4C0B-99ED-E2FC951CEF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +25,14 @@ Global
 		{CFA0CCBF-5F9A-4F9B-A195-0CC063EAADB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFA0CCBF-5F9A-4F9B-A195-0CC063EAADB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFA0CCBF-5F9A-4F9B-A195-0CC063EAADB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A7D50E6-BC54-43C7-A6D9-3DB8AB8AAB22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A7D50E6-BC54-43C7-A6D9-3DB8AB8AAB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A7D50E6-BC54-43C7-A6D9-3DB8AB8AAB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A7D50E6-BC54-43C7-A6D9-3DB8AB8AAB22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23F4CD6C-8120-4EB3-A187-34655B943543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F4CD6C-8120-4EB3-A187-34655B943543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23F4CD6C-8120-4EB3-A187-34655B943543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23F4CD6C-8120-4EB3-A187-34655B943543}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

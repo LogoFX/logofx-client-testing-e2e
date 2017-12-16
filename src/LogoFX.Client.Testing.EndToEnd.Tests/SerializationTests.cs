@@ -38,13 +38,7 @@ namespace LogoFX.Client.Testing.EndToEnd.Tests
             };
             FakeFactoryContext.Current = new FakeFactory();   
             ConstraintFactoryContext.Current = new ConstraintFactory();
-            PlatformProvider.Current = new
-#if NETCOREAPP2_0
-                NetStandardPlatformProvider
-#else
-                NetPlatformProvider
-#endif
-                ();
+            PlatformProvider.Current = new NetStandardPlatformProvider();                
             var simpleBuilder = SimpleProviderBuilder.CreateBuilder();
             simpleBuilder.WithWarehouseItems(items);
 
