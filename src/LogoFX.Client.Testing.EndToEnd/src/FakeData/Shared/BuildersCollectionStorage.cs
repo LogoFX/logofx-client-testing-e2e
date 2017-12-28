@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
@@ -43,7 +44,7 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
         {
             var serializerSettings = CreateSerializerSettings();
             var str = JsonConvert.SerializeObject(buildersCollection, serializerSettings);
-            PlatformProvider.Current.WriteText(id, str);
+            PlatformProvider.Current.WriteText(Path.Combine(Directory.GetCurrentDirectory(), id), str);
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
         /// <returns></returns>
         public BuildersCollection Load(string id)
         {                        
-            var str = PlatformProvider.Current.ReadText(id);
+            var str = PlatformProvider.Current.ReadText(Path.Combine(Directory.GetCurrentDirectory(), id));
             var serializerSettings = CreateSerializerSettings();
             return JsonConvert.DeserializeObject<BuildersCollection>(str, serializerSettings);
         }
