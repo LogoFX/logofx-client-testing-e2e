@@ -131,6 +131,7 @@
       <Link>SimpleProviderBuilder.cs</Link>
     </Compile>
     <Compile Include="AnotherProviderBuilder.cs" />
+    <Compile Include="InheritanceProviderBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
