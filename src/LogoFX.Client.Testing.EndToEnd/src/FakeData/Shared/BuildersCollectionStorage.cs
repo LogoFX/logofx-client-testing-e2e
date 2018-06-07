@@ -73,6 +73,8 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
     {
         protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
         {
+            //Fields are used for builders; DTOs may and should use properties. this resolved the issue of 
+            // inherited classes - should test this with some real-world applications with dto inheritance
             var jsonProperties = type.GetRuntimeFields().Select(f => CreateProperty(f, memberSerialization)).ToList();
 
             foreach (var p in jsonProperties)
