@@ -75,8 +75,11 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
         {
             //Fields are used for builders; DTOs may and should use properties. this resolved the issue of 
             // inherited classes - should test this with some real-world applications with dto inheritance
-            var jsonProperties = type.GetRuntimeFields().Select(f => CreateProperty(f, memberSerialization)).ToList();
-
+            var kind = AnalyzeType(type);
+            var jsonProperties = kind == Kind.Dto
+                ? type.GetProperties().Select(f => CreateProperty(f, memberSerialization)).ToList()
+                : type.GetRuntimeFields().Select(f => CreateProperty(f, memberSerialization)).ToList();
+            
             foreach (var p in jsonProperties)
             {
                 p.Writable = true;
@@ -84,6 +87,31 @@ namespace LogoFX.Client.Testing.EndToEnd.FakeData.Shared
             }
 
             return jsonProperties;
+        }
+
+        private static Kind AnalyzeType(Type type)
+        {
+            //using very naive approach - will add more elaborate
+            //techniques later - analyzing public properties, fields, etc.
+            const string dtoEnding = "DTO";
+            const string builderEnding = "BUILDER";
+            var name = type.Name;
+            if (name.ToUpper().EndsWith(dtoEnding))
+            {
+                return Kind.Dto;
+            }
+            if (name.ToUpper().EndsWith(builderEnding))
+            {
+                return Kind.Builder;
+            }
+            return Kind.Other;
+        }
+
+        private enum Kind
+        {
+            Builder = 1,
+            Dto = 2,
+            Other = 3
         }
     }
 }
