@@ -1,5 +1,5 @@
-﻿using LogoFX.Client.Testing.Contracts;
-using LogoFX.Client.Testing.EndToEnd.FakeData.Shared;
+﻿using Attest.Testing.Core.FakeData.Shared;
+using LogoFX.Client.Testing.Contracts;
 
 namespace LogoFX.Client.Testing.EndToEnd
 {
