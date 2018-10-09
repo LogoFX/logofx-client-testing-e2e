@@ -12,7 +12,7 @@ namespace LogoFX.Client.Testing.EndToEnd
         /// <summary>
         /// Creates new instance of <see cref="StartClientApplicationService"/>
         /// </summary>
-        /// <param name="startApplicationService">The actual start applicationservice</param>
+        /// <param name="startApplicationService">The actual start application service</param>
         /// <param name="applicationPathInfo">The application path information</param>
         public StartClientApplicationService(
             IStartApplicationService startApplicationService,
