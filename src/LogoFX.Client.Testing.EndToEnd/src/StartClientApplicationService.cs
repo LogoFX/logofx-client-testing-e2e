@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Attest.Testing.Contracts;
 using LogoFX.Client.Testing.Contracts;
 
 namespace LogoFX.Client.Testing.EndToEnd

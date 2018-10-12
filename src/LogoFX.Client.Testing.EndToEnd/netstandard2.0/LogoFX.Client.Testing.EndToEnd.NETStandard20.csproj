@@ -22,14 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\src\IApplicationPathInfo.cs" Link="IApplicationPathInfo.cs" />
-    <Compile Include="..\src\StartApplicationService.cs" Link="StartApplicationService.cs" />
     <Compile Include="..\src\StartClientApplicationService.cs" Link="StartClientApplicationService.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Attest.Tests.Core" Version="1.4.1-rc5" />
-    <PackageReference Include="LogoFX.Client.Tests.Contracts" Version="1.1.1-rc4" />
+    <PackageReference Include="Attest.Tests.Core" Version="1.4.1-rc6" />
+    <PackageReference Include="LogoFX.Client.Tests.Contracts" Version="1.1.1-rc5" />
   </ItemGroup>
 
 </Project>
