@@ -37,7 +37,7 @@ namespace LogoFX.Client.Testing.EndToEnd
                 _applicationPathInfo.Executable);
             var applicationDirectory = Path.GetDirectoryName(applicationPath);
             Directory.SetCurrentDirectory(applicationDirectory);
-            _startApplicationService.StartApplication(applicationPath);
+            _startApplicationService.Start(applicationPath);
             Directory.SetCurrentDirectory(testDirectory);
         }
     }
