@@ -12,19 +12,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\netstandard2.0\Release</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard2.0\Release\LogoFX.Client.Testing.EndToEnd.xml</DocumentationFile>
+    <OutputPath>..\Bin\netstandard2.0\Release</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\LogoFX.Client.Testing.EndToEnd.xml</DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="IApplicationPathInfo.cs" />
-    <Compile Remove="StartClientApplicationService.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\src\StartClientApplicationService.cs" Link="StartClientApplicationService.cs" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Attest.Testing.Contracts" Version="1.4.1-rc5" />
     <PackageReference Include="LogoFX.Client.Tests.Contracts" Version="1.1.1-rc5" />
