@@ -24,7 +24,7 @@ namespace LogoFX.Client.Testing.EndToEnd
         }
 
         /// <inheritdoc />
-        public void StartApplication()
+        public void Start()
         {
             //The SetCurrentDirectory() trick
             //is needed in both Fake and Real
