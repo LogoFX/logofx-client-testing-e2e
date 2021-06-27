@@ -13,6 +13,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Attest.Testing.Contracts" Version="2.3.2" />
-    <PackageReference Include="LogoFX.Client.Tests.Contracts" Version="2.2.0-rc3" />
+    <PackageReference Include="LogoFX.Client.Tests.Contracts" Version="2.2.0" />
   </ItemGroup>
 </Project>
