@@ -1,5 +1,6 @@
 ﻿using System.IO;
-using Attest.Testing.Contracts;
+using Attest.Testing.Application;
+using Attest.Testing.Lifecycle;
 using LogoFX.Client.Testing.Contracts;
 
 namespace LogoFX.Client.Testing.EndToEnd
