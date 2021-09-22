@@ -8,3 +8,5 @@ Base implementation of Start Client Application Service for end-to-end tests.
 <img src=https://img.shields.io/nuget/dt/LogoFX.Client.Tests.EndToEnd>
 
 [Get package](https://www.nuget.org/packages/LogoFX.Client.Tests.EndToEnd)
+
+This repository is archived. Its functionality has been moved to https://github.com/LogoFX/testing
